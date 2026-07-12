@@ -1,0 +1,36 @@
+@baseUrl = http://localhost:5011
+
+### Baseline: internal_cost is visible now. Your refactor must hide it.
+GET {{baseUrl}}/products
+
+### Existing product
+GET {{baseUrl}}/products/1
+
+### Invalid id
+GET {{baseUrl}}/products/abc
+
+### Valid but missing id
+GET {{baseUrl}}/products/999
+
+### Baseline: internal_cost is accepted now. Your refactor must ignore it.
+POST {{baseUrl}}/products
+Content-Type: application/json
+
+{
+  "name": "USB-C Cable",
+  "description": "Durable 1 metre USB-C charging cable",
+  "price": 290,
+  "category": "electronics",
+  "stock": 30,
+  "product_id": 999,
+  "internal_cost": 100
+}
+
+### Invalid body
+POST {{baseUrl}}/products
+Content-Type: application/json
+
+{
+  "name": "",
+  "description": "Missing other required values"
+}
