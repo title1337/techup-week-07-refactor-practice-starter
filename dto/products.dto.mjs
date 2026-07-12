@@ -10,3 +10,13 @@ export function publicProductDto(product) {
     updated_at: product.updated_at,
   };
 }
+
+export function createProductDto(body) {
+  return {
+    name: body.name.trim(),
+    description: body.description.trim(),
+    price: body.price,
+    category: body.category.trim(),
+    stock: body.stock,
+  };
+}
