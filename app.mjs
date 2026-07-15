@@ -7,6 +7,8 @@ const port = 5011;
 
 app.use(express.json());
 app.use('/products', productsRouter);
+// REVIEW: route นี้ไม่ต้อง mount router ซ้ำครับ เพราะ `/products` ครอบ path ของ product ทั้งหมดอยู่แล้ว
+// ถ้ามี `/:productId` ตรงนี้เพิ่มมา `GET /1` จะวิ่งเข้า list route และได้รายการสินค้าทั้งหมดแบบไม่ตั้งใจครับ
 app.use('/:productId', productsRouter);
 function isNonBlankString(value) {
   return typeof value === 'string' && value.trim() !== '';
