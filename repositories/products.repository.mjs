@@ -21,7 +21,7 @@ export async function findOne(productId) {
       `,
     [productId],
   );
-  return result.rows;
+  return result.rows[0];
 }
 export async function createProduct(productInput) {
   const result = await connectionPool.query(

@@ -7,7 +7,7 @@ const port = 5011;
 
 app.use(express.json());
 app.use('/products', productsRouter);
-app.use('/:productId', productsRouter);
+
 function isNonBlankString(value) {
   return typeof value === 'string' && value.trim() !== '';
 }

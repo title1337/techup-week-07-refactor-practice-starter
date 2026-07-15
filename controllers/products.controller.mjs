@@ -25,11 +25,11 @@ export async function getByIdProducts(req, res) {
 
     const products = await getByIdProductsService(productId);
 
-    if (products.length === 0) {
+    if (!products) {
       return res.status(404).json({ message: 'Product not found' });
     }
 
-    return res.status(200).json({ data: products.map(publicProductDto) });
+    return res.status(200).json({ data: publicProductDto(products) });
   } catch (error) {
     console.error('[GET /products/:productId] database error:', error.message);
     return res.status(500).json({ message: 'Server could not get product' });
